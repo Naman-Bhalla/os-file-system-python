@@ -28,3 +28,15 @@ class Directory:
 
     def traverse(self):
         pass
+
+    def delete_file(self, file_name):
+        i = -1
+        for files in self.sub_files:
+            i += 1
+            if not files.is_directory() and files.name == file_name:
+                self.size -= files.size
+                self.last_modified = date.today()
+                self.sub_files.pop(i)
+                files.delete()
+                return True
+        return False

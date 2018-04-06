@@ -6,8 +6,13 @@ class Process:
         self.current_directory = directory
         self.current_index = None
 
-    def open_file(self):
-        pass
+    def open_file(self, file_name):
+        for files in self.current_directory.sub_files:
+            if not files.is_directory() and files.name == file_name:
+                self.current_file = files
+                self.current_index = 0
+                return True
+        return False
 
     def read_next(self):
         if self.current_file:

@@ -18,6 +18,7 @@ class File:
         self.data[index] = data
         if index > self.size:
             self.size = index
+            self.last_modified = date.today()
 
     def read(self, index):
         return self.data[index]
@@ -28,10 +29,11 @@ class File:
         return False
 
     def delete(self):
-        pass
+        del self.data
 
     def truncate(self, length):
-        pass
+        self.size = length
+        self.data = self.data[ : self.size]
 
     def __str__(self):
         pass
