@@ -11,18 +11,21 @@ class File:
         self.size = 0
         self.date_created = date.today()
         self.last_modified = self.date_created
-        self.current_pointer = 0
         self.data = []
 
 
-    def write(self, data):
-        pass
+    def write(self, index, data):
+        self.data[index] = data
+        if index > self.size:
+            self.size = index
 
     def read(self, index):
-        pass
+        return self.data[index]
 
     def reposition_index(self, value):
-        pass
+        if value < self.size:
+            return False
+        return True
 
     def delete(self):
         pass
