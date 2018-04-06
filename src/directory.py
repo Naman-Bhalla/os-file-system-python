@@ -1,5 +1,6 @@
 from uuid import uuid4
 from datetime import date
+from src.file import File
 
 class Directory:
 
@@ -15,16 +16,25 @@ class Directory:
         return True
 
     def search(self, file_name):
-        pass
+        for files in self.sub_files:
+            if files.name == file_name:
+                return files
 
     def create(self, file_name):
-        pass
+        self.sub_files.append(File(file_name, '')) # TODO
 
-    def delete(self):
-        pass
+    def delete(self, force):
+        if not self.isEmpty() and not force:
+            return False
+        del self.sub_files
+        return True
 
     def rename(self, initial_name, final_name):
-        pass
+        for files in self.sub_files:
+            if files.name == initial_name:
+                files.name = final_name
+                return True
+        return False
 
     def traverse(self):
         pass
@@ -40,3 +50,8 @@ class Directory:
                 files.delete()
                 return True
         return False
+
+    def isEmpty(self):
+        if self.sub_files:
+            return False
+        return True

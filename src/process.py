@@ -58,3 +58,13 @@ class Process:
                 return True
 
         return False
+
+    def delete_directory(self, directory_name, force):
+        i = -1
+        for directories in self.current_directory.sub_files:
+            i += 1
+            if directories.name == directory_name and directories.is_directory():
+                directories.delete(force)
+                self.current_directory.sub_files.pop(i)
+                return True
+        return False
