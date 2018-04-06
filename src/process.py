@@ -12,12 +12,12 @@ class Process:
     def read_next(self):
         if self.current_file:
             file = self.current_file
-            if (self.current_index + 1) < self.current_file.size:
+            if (self.current_index + 1) <= self.current_file.size:
                 return file.read(self.current_index + 1)
 
     def write_next(self, data):
         if self.current_file:
-            if (self.current_index + 1) < self.current_file.size:
+            if (self.current_index + 1) <= self.current_file.size + 1:
                 file = self.current_file
                 for i in range(len(data)):
                     file.write(self.current_index + 1 + i, data[i])
@@ -30,13 +30,13 @@ class Process:
 
     def read(self, index):
         if self.current_file:
-            if index < self.current_file.size:
+            if index <= self.current_file.size:
                 file = self.current_file
                 return file.read(index)
 
     def write(self, index, data):
         if self.current_file:
-            if index < self.current_file.size:
+            if index <= self.current_file.size + 1:
                 file = self.current_file
                 for i in range(len(data)):
                     file.write(index + i, data[i])

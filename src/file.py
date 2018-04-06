@@ -23,9 +23,9 @@ class File:
         return self.data[index]
 
     def reposition_index(self, value):
-        if value < self.size:
-            return False
-        return True
+        if value <= self.size:
+            return True
+        return False
 
     def delete(self):
         pass
