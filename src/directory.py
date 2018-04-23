@@ -1,6 +1,6 @@
 from uuid import uuid4
 from datetime import date
-from src.file import File
+from file import File
 
 class Directory:
 
@@ -37,7 +37,8 @@ class Directory:
         return False
 
     def traverse(self):
-        pass
+        for anything in self.sub_files:
+            print(anything.name)
 
     def delete_file(self, file_name):
         i = -1

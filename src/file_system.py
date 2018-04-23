@@ -1,4 +1,4 @@
-from src.directory import Directory
+from directory import Directory
 
 class FileSystem:
 

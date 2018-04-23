@@ -1,6 +1,6 @@
 from uuid import uuid4
-from src.directory import Directory
-from src.process import Process
+from directory import Directory
+from process import Process
 
 class User:
     def __init__(self):
@@ -10,4 +10,4 @@ class User:
         self.root_directory = Directory(self.current_directory)
 
     def createProcess(self):
-        self.processes.append(Process(self.current_directory))
+        self.processes.append(Process(self.root_directory))

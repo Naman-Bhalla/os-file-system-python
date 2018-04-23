@@ -15,10 +15,12 @@ class File:
 
 
     def write(self, index, data):
-        self.data[index] = data
         if index > self.size:
+            for i in range(index - self.size + 1):
+                self.data.append(0)
             self.size = index
             self.last_modified = date.today()
+        self.data[index] = data
 
     def read(self, index):
         return self.data[index]

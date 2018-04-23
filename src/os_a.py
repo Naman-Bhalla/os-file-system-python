@@ -1,5 +1,5 @@
-from src.file_system import FileSystem
-from src.user import User
+from file_system import FileSystem
+from user import User
 
 class OS:
 
@@ -13,7 +13,9 @@ class OS:
         self.root_file_system = FileSystem()
 
     def new_user(self):
-        self.users.add(User())
+        user = User()
+        self.users.add(user)
+        return user
 
     def open(self, file_name, mode):
         pass
